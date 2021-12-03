@@ -1,28 +1,36 @@
 import axios from "axios"
 
+// const topicsTab = document.createElement('div')
+// topicsTab.classList.add('topics')
+
 const Tabs = (topics) => {
+
+  console.log(topics);
+
   const topicsTab = document.createElement('div')
-  const anyTab = document.createElement('div')
-  // const tabTwo = document.createElement('div')
-  // const tabThree = document.createElement('div')
+  // const anyTab = document.createElement('div')
 
   topicsTab.classList.add('topics')
-  anyTab.classList.add('tab')
-  // tabTwo.classList.add('tab')
-  // tabThree.classList.add('tab')
+  // anyTab.classList.add('tab')
 
-  //set text here
-  // write a for loop here to gather tabs from the topics array
   for (let i = 0; i < topics.length; i++){
+    const anyTab = document.createElement('div')
     anyTab.textContent = topics[i];
+    anyTab.classList.add('tab')
     topicsTab.appendChild(anyTab)
   }
 
-  // topicsTab.appendChild(tabOne)
-  // topicsTab.appendChild(tabTwo)
-  // topicsTab.appendChild(tabThree)
+  // const topicsTab = document.createElement('div')
+  // const anyTab = document.createElement('div')
 
+  // topicsTab.classList.add('topics')
+  // anyTab.classList.add('tab')
+  // anyTab.textContent = topics[i];
+  
+  // topicsTab.appendChild(anyTab)
+  
   return topicsTab;
+}
 
 
 
@@ -41,19 +49,24 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
-}
+
 
 const tabsAppender = (selector) => {
   axios.get(`http://localhost:5000/api/topics`)
     .then(resp => {
-      console.log(resp.data.topics)
-      for (let i = 0; i < resp.data.topics.length; i++){
-        const tabObj = resp.data.topics[i];
-        const entryPoint = document.querySelector(selector);
-        entryPoint.appendChild(Tabs(tabObj));       
-      }
-      // const entryPoint = document.querySelector(selector);
-      // entryPoint.appendChild(Tabs(tabObj));
+      console.log(resp.data.topics.length)
+      console.log(resp.data.topics[0])
+      
+      // for (let i = 0; i < resp.data.topics.length; i++){
+      //   const tabObj = resp.data.topics[i];
+      //   const entryPoint = document.querySelector(selector);
+
+        
+      //   entryPoint.appendChild(Tabs(tabObj));
+      // }
+      
+      const entryPoint = document.querySelector(selector);
+      entryPoint.appendChild(Tabs(resp.data.topics));
     }) .catch (error => {
       console.error(error);
     }).finally(()=> console.log('operation complete!'));
