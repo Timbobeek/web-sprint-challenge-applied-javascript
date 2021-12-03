@@ -10,9 +10,9 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
-- [ ] Open the assignment in Canvas and click on the "Set up git" option.
-- [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
+- [x] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
+- [x] Open the assignment in Canvas and click on the "Set up git" option.
+- [x] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
 - [ ] Check to see that Codegrade has accepted your git submission.
 
 ## Project Instructions
@@ -60,7 +60,21 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Demonstrate your understanding of this week's concepts by answering the following questions:
 
 1. What is the DOM?
+
+DOM stands for Document Object Model, which is a data representation of the objects that comprise the structure and content of a document on the web.
+
 2. What is an event?
+
+Basically every user interaction with a site (a click, a scroll, a press of a key, etc.) - they are all detectable by the browser.
+
 3. What is an event listener?
+
+It is the process of tracking events and then taking an action based on it.
+
 4. Why would we convert a NodeList into an Array?
+
+In order to play around with data using array methods such as .map .filter .reduce. NodeList is an array-like object and we can only use .forEach method on it. Pretty much turning data from a NodeList into an array gives us more flexibility.
+
 5. What is a component?
+
+It's an element, a piece of code that comprises HTML, CSS or JavaScript brought together for reuse in a website or an application.
