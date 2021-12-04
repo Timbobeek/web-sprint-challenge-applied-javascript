@@ -1,4 +1,37 @@
+import axios from "axios"
+
 const Card = (article) => {
+
+  //console.log(article);
+  
+  const articleCard = document.createElement('div')
+  const articleHeadline = document.createElement('div')
+  const articleAuthor = document.createElement('div')
+  const articleImageContainer = document.createElement('div')
+  const articleImage = document.createElement('img')
+  const articleSpan = document.createElement('span')
+
+  articleCard.classList.add('card')
+  articleHeadline.classList.add('headline')
+  articleAuthor.classList.add('author')
+  articleImageContainer.classList.add('img-container')
+
+  // set attributes, text, etc
+  articleHeadline.textContent = article.headline
+  articleImage.src = article.authorPhoto
+  articleSpan.textContent = `By ${article.authorName}`
+
+
+  articleCard.appendChild(articleHeadline)
+  articleCard.appendChild(articleAuthor)
+  articleAuthor.appendChild(articleImageContainer)
+  articleImageContainer.appendChild(articleImage)
+  articleAuthor.appendChild(articleSpan)
+
+  articleCard.addEventListener('click',()=>{
+    console.log(article.headline);
+  })
+
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,9 +50,33 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  return articleCard;
 }
 
 const cardAppender = (selector) => {
+  axios.get(`http://localhost:5000/api/articles`)
+    .then(resp => {
+      console.log(resp.data)
+
+      const entryPoint = document.querySelector(selector);
+
+      const allArticles = resp.data.articles
+      const tabs = Object.keys(allArticles)
+
+      tabs.forEach(tab => {
+        const articles = allArticles[tab]
+        // console.log('articles for ', tab, articles);
+
+        articles.forEach(article => {
+          const card = Card(article)
+          entryPoint.appendChild(card)
+        })
+      })
+
+    }) .catch (error => {
+      console.error(error);
+    }).finally(()=> console.log('operation done!'));
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.

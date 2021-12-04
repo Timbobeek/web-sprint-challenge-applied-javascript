@@ -5,7 +5,7 @@ import axios from "axios"
 
 const Tabs = (topics) => {
 
-  console.log(topics);
+  //console.log(topics);
 
   const topicsTab = document.createElement('div')
   // const anyTab = document.createElement('div')
@@ -54,8 +54,8 @@ const Tabs = (topics) => {
 const tabsAppender = (selector) => {
   axios.get(`http://localhost:5000/api/topics`)
     .then(resp => {
-      console.log(resp.data.topics.length)
-      console.log(resp.data.topics[0])
+      // console.log(resp.data.topics.length)
+      // console.log(resp.data.topics[0])
       
       // for (let i = 0; i < resp.data.topics.length; i++){
       //   const tabObj = resp.data.topics[i];
