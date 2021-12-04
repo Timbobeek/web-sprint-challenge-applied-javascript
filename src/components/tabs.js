@@ -1,17 +1,15 @@
 import axios from "axios"
 
-// const topicsTab = document.createElement('div')
-// topicsTab.classList.add('topics')
+
 
 const Tabs = (topics) => {
 
   //console.log(topics);
 
   const topicsTab = document.createElement('div')
-  // const anyTab = document.createElement('div')
 
   topicsTab.classList.add('topics')
-  // anyTab.classList.add('tab')
+  
 
   for (let i = 0; i < topics.length; i++){
     const anyTab = document.createElement('div')
@@ -19,15 +17,6 @@ const Tabs = (topics) => {
     anyTab.classList.add('tab')
     topicsTab.appendChild(anyTab)
   }
-
-  // const topicsTab = document.createElement('div')
-  // const anyTab = document.createElement('div')
-
-  // topicsTab.classList.add('topics')
-  // anyTab.classList.add('tab')
-  // anyTab.textContent = topics[i];
-  
-  // topicsTab.appendChild(anyTab)
   
   return topicsTab;
 }
@@ -56,15 +45,7 @@ const tabsAppender = (selector) => {
     .then(resp => {
       // console.log(resp.data.topics.length)
       // console.log(resp.data.topics[0])
-      
-      // for (let i = 0; i < resp.data.topics.length; i++){
-      //   const tabObj = resp.data.topics[i];
-      //   const entryPoint = document.querySelector(selector);
 
-        
-      //   entryPoint.appendChild(Tabs(tabObj));
-      // }
-      
       const entryPoint = document.querySelector(selector);
       entryPoint.appendChild(Tabs(resp.data.topics));
     }) .catch (error => {
